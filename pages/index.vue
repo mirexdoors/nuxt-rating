@@ -1,43 +1,124 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-            >
-              documentation
-            </a>.
-          </p>
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-          >
-            Nuxt Documentation
-          </a>
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+    <header class="header" id="header">
+        <div class="line"></div>
+        <h1 class="h1" id="title">Рейтинг федерации сквоша России</h1>
+        <div class="header__backgroundWrapper">
+            <div class="header__background">
+                2020
+            </div>
+        </div>
+    </header>
 </template>
 
 <script>
-export default {
-  components: {
+
+  export default {
+    data() {
+      return {
+        title: 'Рейтинг федерации сквоша России',
+      }
+    },
+    mounted() {
+      if (process.client) {
+        const text = this.title;
+        const textArr = text.split('');
+        const newEl = document.createElement('h1');
+        newEl.innerHTML = `<no-ssr>${textArr.map(letter => `<span class="letter" style="${randomVisibility()}">${letter}</span>`).join('')}</no-ssr>`;
+        console.log(document.getElementById('header'));
+        newEl.classList.add('overlay');
+        document.getElementById('header').appendChild(newEl);
+      }
+    },
+    components: {}
   }
-}
+
+
+  function randomVisibility() {
+    return Math.random() < 0.5 ? 'visibility: hidden' : 'visibility: visible';
+  }
 </script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .header {
+        position: relative;
+        color: #393939;
+        min-height: 250px;
+        background: #F5F5F5;
+        padding: 1rem 4rem;
+        overflow: hidden;
+    }
+
+    h1 {
+        position: absolute;
+        top: 5%;
+        z-index: 1;
+        font-size: 3.5rem;
+    }
+
+    .overlay {
+        z-index: 2;
+    }
+
+    .line {
+        background-color: #cc2d32;
+        border-radius: 10px;
+        position: absolute;
+        top: 23%;
+        left: -1vw;
+        transform: translateY(-50%);
+        height: .4rem;
+        width: 0;
+        animation: grow 3s linear forwards;
+        z-index: 2;
+    }
+
+    .header__backgroundWrapper {
+        position: absolute;
+        bottom: 30%;
+        right: 10%;
+        font-size: 2.5rem;
+        font-weight: bold;
+        transform: rotate(-20deg);
+    }
+
+    .header__background {
+        position: relative;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        margin-left: 10rem;
+    }
+
+    .header__background:before {
+        content : "";
+        position: absolute;
+        left    : 0;
+        bottom  :  -135%;
+        height  : 1px;
+        width   : 200%;  /* or 100px */
+        border-bottom: 1.5rem solid #cc2d32;
+    }
+    .header__background:after {
+        content : "";
+        position: absolute;
+        right: 70%;
+        top: 30%;
+        height  : 1px;
+        width   : 150%;
+        border-top: 1.5rem solid #cc2d32;
+    }
+    @keyframes grow {
+        to {
+            width: 68vw;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        .header__background {
+            color: #F5F5F5;
+        }
+    }
+</style>

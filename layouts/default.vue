@@ -1,16 +1,9 @@
 <template>
   <v-app dark>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      {{ title }}
-    </v-app-bar>
     <v-content>
-      <v-container>
+
         <nuxt/>
-      </v-container>
+
     </v-content>
     <v-footer
       app
