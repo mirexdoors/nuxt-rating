@@ -1,12 +1,24 @@
-const URL_MEN = 'https://squashrating.ru/tables/data/all.php';
-export const state = () => {
-  this.$axios.$get(URL_MEN).then((response) => {
-     console.log(response.data, this)
-  })
+const URL_MEN = 'https://squashrating.ru/tables/all.php';
+
+export const state = () => ({
+  players: []
+});
+
+export const mutations = {
+  storePlayers (state, data) {
+    state.players.push(...data)
+  }
 };
 
-export const getters = {
-  getAll (state) {
-    return state;
+export const actions = {
+  async getPlayers(store) {
+    const response = await fetch(URL_MEN);
+    const players = await response.json();
+    store.commit('storePlayers', players);
   }
-}
+};
+export const getters = {
+  get(state) {
+    return state.players;
+  }
+};

@@ -4,8 +4,8 @@
             <headerBlock/>
             <navigation/>
             <nuxt/>
-
         </v-content>
+        {{players}}
         <v-footer
                 app
         >
@@ -15,9 +15,9 @@
 </template>
 
 <script>
-  import headerBlock from './header.vue';
+  import headerBlock from './headerBlock.vue';
   import navigation from './navigation.vue';
-  import {mapGetters} from 'vuex';
+  import { mapGetters } from 'vuex';
 
   export default {
     data() {
@@ -29,7 +29,7 @@
       }
     },
     computed: mapGetters({
-      players: 'players/getAll',
+      players: 'players/get',
     }),
     components: {
       headerBlock,

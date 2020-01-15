@@ -11,7 +11,7 @@
 </template>
 <script>
   export default {
-    name: 'header',
+    name: 'headerBlock',
     data() {
       return {
         title: 'Рейтинг федерации сквоша России',
