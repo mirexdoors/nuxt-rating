@@ -5,7 +5,6 @@
             <navigation/>
             <nuxt/>
         </v-content>
-        {{players}}
         <v-footer
                 app
         >
@@ -17,7 +16,6 @@
 <script>
   import headerBlock from './headerBlock.vue';
   import navigation from './navigation.vue';
-  import { mapGetters } from 'vuex';
 
   export default {
     data() {
@@ -28,9 +26,6 @@
         email: 'info@rating.sibsquash.ru'
       }
     },
-    computed: mapGetters({
-      players: 'players/get',
-    }),
     components: {
       headerBlock,
       navigation

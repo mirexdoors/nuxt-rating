@@ -112,5 +112,8 @@
         .header__background {
             color: #F5F5F5;
         }
+        .header {
+            padding: .75rem;
+        }
     }
 </style>
