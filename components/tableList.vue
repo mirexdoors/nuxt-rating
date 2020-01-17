@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="searchWrapper pa-4">
+        <div class="searchWrapper px-12">
             <v-text-field class="search" v-model="search" label="Поиск" single-line hide-details></v-text-field>
         </div>
         <v-data-table
-                class="pa-4"
+                class="pa-12"
                 :headers="headers"
                 :items="items"
                 :search="search"
@@ -39,12 +39,8 @@
   }
 </script>
 <style>
-    .searchWrapper {
-        background: #393939;
-    }
-    .search {
-        background: #F5F5F5;
-        color: #cc2d32;
+    .theme--light.v-data-table, th {
+        background-color: #fafafa!important;
     }
     th span {
         font-weight: bold;
