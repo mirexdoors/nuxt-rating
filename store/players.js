@@ -1,19 +1,23 @@
 const URL_MEN = 'https://squashrating.ru/tables/all.php';
+const URL_WOMEN = 'https://squashrating.ru/tables/allWomen.php';
 
 export const state = () => ({
-  players: []
+  players: {}
 });
 
 export const mutations = {
   storePlayers (state, data) {
-    state.players.push(...data)
+   state.players =data;
   }
 };
 
 export const actions = {
   async getPlayers(store) {
-    const response = await fetch(URL_MEN);
-    const players = await response.json();
+    const players = {};
+    const responseMen = await fetch(URL_MEN);
+    players.men = await responseMen.json();
+    const responseWomen = await fetch(URL_WOMEN);
+    players.women = await responseWomen.json();
     store.commit('storePlayers', players);
   }
 };

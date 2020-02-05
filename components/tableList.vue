@@ -11,6 +11,7 @@
                 hide-default-footer
                 disable-pagination
                 fixed-header
+                hide-default-header
         />
     </div>
 </template>

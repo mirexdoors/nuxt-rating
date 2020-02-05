@@ -1,6 +1,7 @@
 <template>
     <div>
-        <table-list :items="players"/>
+        <table-list v-if="isMen" :items="players.men"/>
+        <table-list v-else :items="players.women"/>
     </div>
 </template>
 
@@ -16,6 +17,7 @@
     },
     computed: mapGetters({
       players: 'players/get',
+      isMen: 'isMen/get'
     }),
     components: {tableList}
   }
