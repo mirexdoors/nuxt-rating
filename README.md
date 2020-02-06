@@ -19,7 +19,8 @@ $ npm run start
 $ npm run generate
 ```
 
-* 1 Детальная игрока
-* 2 Опубликовать
+* 1 Таблица на мобиле
+* 2 Детальная игрока
+* 3 Опубликовать
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
